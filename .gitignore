@@ -1,0 +1,22 @@
+.vscode/*
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+
+Binaries/*
+Build/*
+
+Saved/*
+
+# Compiled source files for the engine to use
+Intermediate/*
+
+# Cache files for the editor to use
+DerivedDataCache/*
+
+# This folder is to big for git, u can download it on epic game asset store
+Content/MedievalDungeon/Textures/*
