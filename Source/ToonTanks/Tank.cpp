@@ -26,3 +26,25 @@ void ATank::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+
+// Called to bind functionality to input
+void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
+	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
+
+}
+
+
+void ATank::Move(float Value)
+{
+	UE_LOG(LogTemp, Display, TEXT("Move: %f"), Value);
+}
+
+
+void ATank::Turn(float Value)
+{
+	UE_LOG(LogTemp, Display, TEXT("Turn: %f"), Value);
+}
