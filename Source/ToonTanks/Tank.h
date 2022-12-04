@@ -7,7 +7,7 @@
 #include "Tank.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class TOONTANKS_API ATank : public ABasePawn
@@ -16,7 +16,7 @@ class TOONTANKS_API ATank : public ABasePawn
 
 public:
 	// Sets default values for this pawn's properties
-	 ATank();
+	ATank();
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -32,6 +32,9 @@ private:
 	class USpringArmComponent* SpringArm;
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class UCameraComponent* Camera;
+
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float Speed = 200.f;
 
 	void Move(float Value);
 	void Turn(float Value);
