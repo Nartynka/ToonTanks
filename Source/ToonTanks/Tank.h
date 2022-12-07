@@ -33,6 +33,7 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class UCameraComponent* Camera;
 
+	class APlayerController* PlayerControllerRef;
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float Speed = 200.f;
 
