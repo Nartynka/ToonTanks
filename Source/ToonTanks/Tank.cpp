@@ -31,9 +31,9 @@ void ATank::Tick(float DeltaTime)
 	if(PlayerControllerRef)
 	{
 		FHitResult HitResult;
-		bool HasHit = PlayerControllerRef->GetHitResultUnderCursor(ECC_GameTraceChannel2, false, HitResult);
-		if(HasHit)
-			DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 20, 10, FColor::Blue, false, -1.f);
+		PlayerControllerRef->GetHitResultUnderCursor(ECC_GameTraceChannel2, false, HitResult);
+		RotateTurret(HitResult.ImpactPoint);
+		DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 20, 10, FColor::Blue, false, -1.f);
 	}
 }
 
