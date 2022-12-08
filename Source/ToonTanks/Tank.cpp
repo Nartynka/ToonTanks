@@ -5,7 +5,6 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/PlayerController.h"
-#include "DrawDebugHelpers.h"
 
 ATank::ATank()
 {
@@ -33,7 +32,6 @@ void ATank::Tick(float DeltaTime)
 		FHitResult HitResult;
 		PlayerControllerRef->GetHitResultUnderCursor(ECC_GameTraceChannel2, false, HitResult);
 		RotateTurret(HitResult.ImpactPoint);
-		DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 20, 10, FColor::Blue, false, -1.f);
 	}
 }
 
