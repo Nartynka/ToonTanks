@@ -28,15 +28,12 @@ void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	FHitResult HitResult;
-	bool HasHit = PlayerControllerRef->GetHitResultUnderCursor(ECC_GameTraceChannel2, false, HitResult);
-
-	if(HasHit)
+	if(PlayerControllerRef)
 	{
-		UE_LOG(LogTemp, Display, TEXT("Target: %s"), *HitResult.GetActor()->GetName());
-		FVector Start = GetActorLocation();
-		FVector End = Start + HitResult.ImpactPoint;
-		DrawDebugSphere(GetWorld(), End, 10, 10, FColor::Blue, false, 5);
+		FHitResult HitResult;
+		bool HasHit = PlayerControllerRef->GetHitResultUnderCursor(ECC_GameTraceChannel2, false, HitResult);
+		if(HasHit)
+			DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 20, 10, FColor::Blue, false, -1.f);
 	}
 }
 
