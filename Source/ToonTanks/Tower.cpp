@@ -1,17 +1,18 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Turret.h"
+#include "Tower.h"
 #include "Kismet/GameplayStatics.h"
 #include "Tank.h"
-void ATurret::BeginPlay()
+
+void ATower::BeginPlay()
 {
    Super::BeginPlay();
 
    Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
 }
 
-void ATurret::Tick(float DeltaTime)
+void ATower::Tick(float DeltaTime)
 {
    Super::Tick(DeltaTime);
 

@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "BasePawn.h"
-#include "Turret.generated.h"
+#include "Tower.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class TOONTANKS_API ATurret : public ABasePawn
+class TOONTANKS_API ATower : public ABasePawn
 {
 	GENERATED_BODY()
 
