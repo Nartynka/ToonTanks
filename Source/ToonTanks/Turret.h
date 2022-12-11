@@ -20,4 +20,6 @@ protected:
 	virtual void BeginPlay() override;
 private:
 	class ATank* Tank;
+	UPROPERTY(EditDefaultsOnly, Category = "Combat")
+	float FireRange = 500.f;
 };

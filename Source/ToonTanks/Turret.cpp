@@ -14,4 +14,15 @@ void ATurret::BeginPlay()
 void ATurret::Tick(float DeltaTime)
 {
    Super::Tick(DeltaTime);
+
+   if(Tank)
+   {
+      float Distance = FVector::Dist(GetActorLocation(), Tank->GetActorLocation());
+
+      if(Distance<=FireRange)
+      {
+        RotateTurret(Tank->GetActorLocation());
+      }
+
+   }
 }
