@@ -26,14 +26,14 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	// UPROPERTY(EditAnywhere)
-	// float Speed = 100;
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class USpringArmComponent* SpringArm;
+	
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class UCameraComponent* Camera;
 
 	class APlayerController* PlayerControllerRef;
+
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float Speed = 200.f;
 
@@ -42,6 +42,7 @@ private:
 
 	void Move(float Value);
 	void Turn(float Value);
+	void Fire();
 
 public:
 	// Called every frame
