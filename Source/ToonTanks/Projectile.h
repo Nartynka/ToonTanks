@@ -20,8 +20,8 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY(EditDefaultsOnly, Category = "Components")
+	UPROPERTY(EditDefaultsOnly, Category = "Projectile")
 	class UCapsuleComponent* CapsuleComp;
-	UPROPERTY(EditDefaultsOnly, Category = "Components")
+	UPROPERTY(EditDefaultsOnly, Category = "Projectile")
 	UStaticMeshComponent* ProjectileMesh;
 };
