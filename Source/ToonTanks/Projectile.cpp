@@ -13,8 +13,6 @@ AProjectile::AProjectile()
 	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Projectile Mesh"));
 	RootComponent = ProjectileMesh;
 
-	CapsuleComp = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Component"));
-	ProjectileMesh->SetupAttachment(CapsuleComp);
 }
 
 // Called when the game starts or when spawned

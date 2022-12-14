@@ -21,7 +21,5 @@ protected:
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Projectile")
-	class UCapsuleComponent* CapsuleComp;
-	UPROPERTY(EditDefaultsOnly, Category = "Projectile")
 	UStaticMeshComponent* ProjectileMesh;
 };
