@@ -22,4 +22,7 @@ protected:
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Projectile")
 	UStaticMeshComponent* ProjectileMesh;
+
+	UPROPERTY(VisibleAnywhere)
+	class UProjectileMovementComponent* ProjectileMovement;
 };
