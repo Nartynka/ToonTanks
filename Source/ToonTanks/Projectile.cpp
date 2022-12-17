@@ -4,6 +4,8 @@
 #include "Projectile.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "GameFramework/DamageType.h"
+#include "Kismet/GameplayStatics.h"
 // Sets default values
 AProjectile::AProjectile()
 {
@@ -15,8 +17,8 @@ AProjectile::AProjectile()
 
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement"));
 	
-	ProjectileMovement->MaxSpeed = 1300.f;
 	ProjectileMovement->InitialSpeed = 1300.f;
+	ProjectileMovement->MaxSpeed = 1301.f;
 
 }
 
@@ -29,7 +31,16 @@ void AProjectile::BeginPlay()
 
 void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	// UE_LOG(LogTemp, Warning, TEXT("HitComp name: %s"), *HitComp->GetName());
-	// UE_LOG(LogTemp, Warning, TEXT("OtherActor name: %s"), *OtherActor->GetName());
-	// UE_LOG(LogTemp, Warning, TEXT("OtherComp name: %s"), *OtherComp->GetName());
+	auto MyOwner = GetOwner();
+	if(Owner == nullptr) return;
+
+	auto MyOwnerInstigator = MyOwner->GetInstigatorController();
+	auto DamageType = UDamageType::StaticClass();
+
+	if(OtherActor && OtherActor != this && OtherActor != MyOwner)
+	{
+		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwnerInstigator, this, DamageType);
+		Destroy();
+	}
+
 }
