@@ -18,7 +18,7 @@ AProjectile::AProjectile()
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement"));
 	
 	ProjectileMovement->InitialSpeed = 1300.f;
-	ProjectileMovement->MaxSpeed = 1301.f;
+	ProjectileMovement->MaxSpeed = 1300.f;
 
 }
 
