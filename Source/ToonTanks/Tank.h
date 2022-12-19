@@ -4,11 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "BasePawn.h"
+#include "GameFramework/PlayerController.h"
+
 #include "Tank.generated.h"
 
-/**
- *
- */
 UCLASS()
 class TOONTANKS_API ATank : public ABasePawn
 {
@@ -21,6 +20,8 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	void HandleDestruction();
+	APlayerController* GetPlayerController() const {return PlayerController;}
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -32,7 +33,7 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class UCameraComponent* Camera;
 
-	class APlayerController* PlayerControllerRef;
+	APlayerController* PlayerController;
 
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float Speed = 200.f;
@@ -42,7 +43,6 @@ private:
 
 	void Move(float Value);
 	void Turn(float Value);
-	void Fire();
 
 public:
 	// Called every frame

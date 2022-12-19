@@ -4,7 +4,6 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/GameplayStatics.h"
-#include "GameFramework/PlayerController.h"
 
 ATank::ATank()
 {
@@ -20,17 +19,17 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 
-	PlayerControllerRef = Cast<APlayerController>(GetController());
+	PlayerController = Cast<APlayerController>(GetController());
 }
 
 void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if(PlayerControllerRef)
+	if(PlayerController)
 	{
 		FHitResult HitResult;
-		PlayerControllerRef->GetHitResultUnderCursor(ECC_GameTraceChannel2, false, HitResult);
+		PlayerController->GetHitResultUnderCursor(ECC_GameTraceChannel2, false, HitResult);
 		RotateTurret(HitResult.ImpactPoint);
 	}
 }
@@ -59,4 +58,12 @@ void ATank::Turn(float Value)
 	FRotator DeltaRotation = FRotator::ZeroRotator;
 	DeltaRotation.Yaw = Value * TurnRate * UGameplayStatics::GetWorldDeltaSeconds(this);
 	AddActorLocalRotation(DeltaRotation);
+}
+
+void ATank::HandleDestruction()
+{
+	Super::HandleDestruction();
+
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
 }
