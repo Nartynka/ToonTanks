@@ -17,7 +17,7 @@ AProjectile::AProjectile()
 
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement"));
 	
-	ProjectileMovement->InitialSpeed = 1300.f;
+	ProjectileMovement->InitialSpeed = 130.f;
 	ProjectileMovement->MaxSpeed = 1300.f;
 
 }
@@ -40,7 +40,8 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 	if(OtherActor && OtherActor != this && OtherActor != MyOwner)
 	{
 		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwnerInstigator, this, DamageType);
-		Destroy();
 	}
+	Destroy();
 
+	UE_LOG(LogTemp, Warning, TEXT("Hited: %s"), *OtherActor->GetName());
 }
