@@ -43,5 +43,4 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 	}
 	Destroy();
 
-	UE_LOG(LogTemp, Warning, TEXT("Hited: %s"), *OtherActor->GetName());
 }

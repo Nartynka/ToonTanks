@@ -29,7 +29,6 @@ void AToonTanksGameMode::BeginPlay()
    Super::BeginPlay();
    HandleGameStart();
 
-   UE_LOG(LogTemp, Error, TEXT("AAA: %i"), GetTowerCount());
 }
 
 void AToonTanksGameMode::HandleGameStart()
