@@ -63,7 +63,7 @@ void ATank::Turn(float Value)
 void ATank::HandleDestruction()
 {
 	Super::HandleDestruction();
-
+	bAlive = false;
 	SetActorHiddenInGame(true);
 	SetActorTickEnabled(false);
 }
